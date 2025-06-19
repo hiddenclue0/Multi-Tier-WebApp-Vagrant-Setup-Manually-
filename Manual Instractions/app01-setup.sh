@@ -16,7 +16,7 @@ sudo cp -r apache-tomcat-10.1.26/* /usr/local/tomcat/
 sudo chown -R tomcat:tomcat /usr/local/tomcat
 
 # Create tomcat systemd service
-cat <<EOF | sudo tee /etc/systemd/system/tomcat.service
+sudo vim /etc/systemd/system/tomcat.service
 [Unit]
 Description=Tomcat
 After=network.target
@@ -36,18 +36,12 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-EOF
 
 # Reload systemd and start Tomcat
 sudo systemctl daemon-reload
 sudo systemctl start tomcat
 sudo systemctl enable tomcat
-
-# Configure firewall
-sudo systemctl start firewalld
-sudo systemctl enable firewalld
-sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
-sudo firewall-cmd --reload
+sudo systemctl status tomcat
 
 # Install Maven
 cd /tmp/
@@ -60,8 +54,8 @@ export MAVEN_OPTS="-Xmx512m"
 
 # Clone application source code
 cd /tmp/
-git clone -b local https://github.com/hkhcoder/vprofile-project.git
-cd vprofile-project
+git clone https://github.com/hiddenclue0/spring-multi-tier-enterprise-app.git
+cd spring-multi-tier-enterprise-app/
 
 # OPTIONAL: Edit application.properties manually here if needed
 
@@ -76,4 +70,5 @@ sudo chown tomcat:tomcat /usr/local/tomcat/webapps -R
 sudo systemctl start tomcat
 sudo systemctl restart tomcat
 
-echo "✅ app01 (Tomcat + Maven) setup complete."
+# Logout db01
+exit
