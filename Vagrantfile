@@ -87,7 +87,7 @@ Vagrant.configure("2") do |config|
     web01.vm.hostname = "web01"
     web01.vm.network "private_network", ip: "192.168.56.11"
     web01.vm.provider "virtualbox" do |vb|
-      vb.gui = false       # No GUI for resource savings
+      vb.gui = true       # No GUI for resource savings
       vb.memory = 2024     # ~2 GB RAM
       vb.cpus = 2          # 2 CPU cores
     end
