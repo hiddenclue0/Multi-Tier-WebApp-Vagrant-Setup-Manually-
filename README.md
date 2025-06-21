@@ -43,8 +43,8 @@ The stack uses a mix of **CentOS Stream 9** and **Ubuntu 22.04 (Jammy)** VMs to 
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/yourusername/multi-tier-web-app.git
-cd multi-tier-web-app
+git clone [https://github.com/yourusername/multi-tier-web-app.git](https://github.com/hiddenclue0/vprofile.git)
+cd vprofile
 ```
 
 ### 2. Start Vagrant VMs
